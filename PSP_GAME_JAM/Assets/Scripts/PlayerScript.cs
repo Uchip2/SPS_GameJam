@@ -15,7 +15,12 @@ public class PlayerScript : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint;
     [Space()]
+    [Range(7, 40)]
     public float bulletForce;
+
+
+    
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // gets the rigidbody of player and stores it in rb variable
@@ -46,6 +51,7 @@ public class PlayerScript : MonoBehaviour
         var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
     }
 
 
@@ -56,6 +62,14 @@ public class PlayerScript : MonoBehaviour
         Rigidbody2D bulletobjRb = bulletobj.GetComponent<Rigidbody2D>(); //gets the rigidbody of the bullet
 
         bulletobjRb.AddForce(bulletobj.transform.up * bulletForce, ForceMode2D.Impulse); // applies force
+              
+
 
     }
+
+    
+
+
+
+
 }
