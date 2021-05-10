@@ -4,72 +4,67 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    private Rigidbody2D rb; // stores the rigidbody component of the player for physics and stuff like that
     //movement
     [Header("Movement")]
     [Range(1, 30)]
     public float speed;
+    private bool facingRight;
+    [Header("Jump")]
+    [Range(1, 50)]
+    public float jumpForce;
+    private JumpCheck jumpCheck;
 
-    private Rigidbody2D rb; // stores the rigidbody component of the player for physics and stuff like that
-    [Space()]
-    [Header("Shooting")]
-    public GameObject bullet;
-    public Transform firePoint;
-    [Space()]
-    [Range(7, 40)]
-    public float bulletForce;
+   
 
 
-    
-    
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // gets the rigidbody of player and stores it in rb variable
+        jumpCheck = GetComponentInChildren<JumpCheck>();
     }
 
 
     void Update()
     {
         Movement();
-
-        LookAtMouse();
-        if (Input.GetMouseButtonDown(0)) { Shooting();  }
-        
+        if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") && jumpCheck.isgrounded == true) { Jump(); }
     }
 
 
     void Movement()
     {
-        var move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) ; // gets input of WASD and inc by 1 or -1 if pressed 
-        rb.velocity = move * speed; //multiples the 2 axis by the speed so if left is pressed (-1,0) * 4(speed) = -4,0 so it will move 4 to the left
+        var input = Input.GetAxisRaw("Horizontal"); // gets input of WASD and inc by 1 or -1 if pressed 
+        rb.velocity = new Vector2(input * speed, rb.velocity.y); //multiples the 2 axis by the speed so if left is pressed (-1,0) * 4(speed) = -4,0 so it will move 4 to the left
+
+
+        //checks if the character is fliped
+        if (input > 0 && facingRight == false)
+        {
+            Flip();
+        }
+        else if (input < 0 && facingRight == true)
+        {
+            Flip();
+        }
     }
 
 
-
-    //shooting
-    void LookAtMouse() //dont know how this works .... DONT TOUCH
+    void Flip()
     {
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); //flips character
+        facingRight = !facingRight;
+    } //rotates charachter around
 
-    }
-
-
-    void Shooting()
+    void Jump()
     {
-
-        GameObject bulletobj = Instantiate(bullet, firePoint.position, firePoint.rotation); //creates bullet from prefeb and stores it as game object
-        Rigidbody2D bulletobjRb = bulletobj.GetComponent<Rigidbody2D>(); //gets the rigidbody of the bullet
-
-        bulletobjRb.AddForce(bulletobj.transform.up * bulletForce, ForceMode2D.Impulse); // applies force
-              
-
-
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
-
-    
-
 
 
 
 }
+
