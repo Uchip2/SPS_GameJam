@@ -31,7 +31,10 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         Movement();
-        if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") && jumpCheck.isgrounded == true) { Jump(); }
+        if (Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") ) {
+            var hasJumped = jumpCheck.isgrounded;
+            if (hasJumped) { Jump(); } 
+        }
     }
 
 

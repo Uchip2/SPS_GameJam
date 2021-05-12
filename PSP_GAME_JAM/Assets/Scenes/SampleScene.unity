@@ -501,11 +501,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535224501398961809, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.695
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 535224501398961809, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.078
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 535224501398961809, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -553,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4385906519507355572, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: jumpForce
-      value: 9.4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4385906519507355572, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: bulletForce
@@ -569,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4385906519507355573, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4385906519507355573, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4385906519507355579, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5078850178443650513, guid: 21c74cac4496f644688c1f2109a730ce, type: 3}
       propertyPath: m_Name
