@@ -57,29 +57,10 @@ public class Shooting : MonoBehaviour
         canShoot = true;
     } // waits certain seconds
 
-    /*
-    void LookMouse()
-    {
-        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 mouseDirection = Input.mousePosition - pos;
-        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position); // calculates the diraction of the mouse
-        var angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;// calculates angle
+    
 
 
-        if (dir.y > transform.position.y)
-        {
-          
-            
-            transform.RotateAround(playertransform.transform.position, transform.forward, 2);
-        }
-
-        print(angle);
-
-
-
-    }
-
-    */
+    
 
 
 
