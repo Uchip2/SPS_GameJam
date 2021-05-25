@@ -19,18 +19,26 @@ public class Shooting : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool canShoot = true;
+
+    [Header("time line check")]
+    public PlayerScript player;
+    public PlayerScript.timelines WeaponTimeline;
     
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        player = GetComponent<PlayerScript>();
     }
     // Update is called once per frame
     void Update()
     {
-        //LookMouse();
-        if (canShoot == true) { Shoot(); }
+        if(player.currentTime == WeaponTimeline)
+        {
+            if (canShoot == true) { Shoot(); }
+        }
+        
+        
     }
 
     void Shoot()
